@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 
-mongoose.connect('mongodb://localhost/bigbang_app');
+var mongoUri = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/bigbang_app';
+
+mongoose.connect(mongoUri);
 
 var schema = new mongoose.Schema({
     /*
